@@ -59,7 +59,12 @@ def chat():
     print(input)
     result=qa({"query": input})
     print("Response : ", result)
-    return str(result["result"])
+    page = str(result["source_documents"][0].__dict__["metadata"]["page"]) 
+    source = result["source_documents"][0].__dict__["metadata"]["source"]
+    response = str(result["result"] + "\n\n" + "Page : " + page+ "\n\n" + "Source : " + source)
+    print(response)
+    return response
+    # return str(result["result"] + "\n" + )
 
 
 
